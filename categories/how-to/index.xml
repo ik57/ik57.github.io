@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ibrahim K</title>
-    <link>https://ik57.github.io/</link>
-    <description>Recent content on Ibrahim K</description>
+    <title>how-to on Ibrahim K</title>
+    <link>https://ik57.github.io/categories/how-to/</link>
+    <description>Recent content in how-to on Ibrahim K</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 31 May 2021 20:08:50 +0300</lastBuildDate><atom:link href="https://ik57.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 May 2021 20:08:50 +0300</lastBuildDate><atom:link href="https://ik57.github.io/categories/how-to/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ways To Switch Between Keyboard Layouts in bspwm</title>
       <link>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</link>
@@ -17,15 +17,6 @@
       <description>Since bspwm doesn&amp;rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.
 First we need to create a script. Here is an example for a script that switch between English and Arabic:
 #!/bin/bash  # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x</description>
-    </item>
-    
-    <item>
-      <title>Whoami</title>
-      <link>https://ik57.github.io/about/</link>
-      <pubDate>Fri, 15 Jan 2021 23:57:44 +0300</pubDate>
-      
-      <guid>https://ik57.github.io/about/</guid>
-      <description>Loading&amp;hellip;</description>
     </item>
     
   </channel>
