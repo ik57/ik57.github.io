@@ -16,14 +16,13 @@
             
             <guid>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</guid>
             <description>Since bspwm doesn&amp;rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.
-First we need to create a script. Here is an example for a script that switch between English and Arabic:
-#!/bin/bash  # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x</description>
+1. Create A script First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:
+#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x</description>
             <content type="html"><![CDATA[<p>Since bspwm doesn&rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.</p>
-<p>First we need to create a script. Here is an example for a script that switch between English and Arabic:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/bin/bash
-</span><span style="color:#ff79c6"></span>
-<span style="color:#6272a4"># Switching between keyboard layouts</span>
-
+<h2 id="1-create-a-script">1. Create A script</h2>
+<p>First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/bin/bash
+</span><span style="color:#ff79c6"></span><span style="color:#6272a4"># Switching between keyboard layouts</span>
 <span style="color:#8be9fd;font-style:italic">CURRENT_LAYOUT</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>setxkbmap -query | awk <span style="color:#f1fa8c">&#39;NR==3{print $2}&#39;</span><span style="color:#ff79c6">)</span>
 
 <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$CURRENT_LAYOUT</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;us&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
@@ -32,21 +31,21 @@ First we need to create a script. Here is an example for a script that switch be
 <span style="color:#ff79c6">else</span>
     setxkbmap <span style="color:#f1fa8c">&#34;us&#34;</span>
 <span style="color:#ff79c6">fi</span>
-</code></pre></div><p>Then, make the script executable using <code>chmod +x </code></p>
-<h2 id="sxhkd">sxhkd</h2>
+</code></pre></div><p>Then, make the script executable using <code>chmod +x</code></p>
+<h2 id="2-add-new-sxhkd-keybinding">2. Add new sxhkd keybinding</h2>
 <p>In the <code>sxhkdrc</code> file, add new keybinding:</p>
-<pre><code># Switch keyboard language
-alt + space
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CMake" data-lang="CMake"><span style="color:#6272a4"># Switch keyboard language
+</span><span style="color:#6272a4"></span>alt + space
 	[the script].sh
-</code></pre><h2 id="polybar">Polybar</h2>
-<p>Add new module in the plybar <code>config</code> file.</p>
-<pre><code>######################################
+</code></pre></div><h2 id="3-add-a-polybar-module">3. Add a Polybar module</h2>
+<p>Add the below module to the plybar <code>config</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">#############################
 [module/toggle_kb]
 type = custom/script
-exec = echo 'Toggle KB |'
+exec = echo &#39;Toggle KB |&#39;
 click-left = [the script].sh
-######################################
-</code></pre><p>Then, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
+#############################
+</code></pre></div><p>Then, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
 ]]></content>
         </item>
         
