@@ -6,7 +6,7 @@
     <description>Recent content in polybar on Ibrahim K</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 31 May 2021 20:08:50 +0300</lastBuildDate><atom:link href="https://ik57.github.io/tags/polybar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ways To Switch Between Keyboard Layouts in bspwm</title>
@@ -15,8 +15,8 @@
       
       <guid>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</guid>
       <description>Since bspwm doesn&amp;rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.
-1. Create A script First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:
-#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x</description>
+1. Create a script First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:
+#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x command.</description>
     </item>
     
   </channel>

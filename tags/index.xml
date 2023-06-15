@@ -6,23 +6,50 @@
     <description>Recent content in Tags on Ibrahim K</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 31 May 2021 20:08:50 +0300</lastBuildDate><atom:link href="https://ik57.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 14 Jun 2023 23:24:00 +0300</lastBuildDate><atom:link href="https://ik57.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>bspwm</title>
-      <link>https://ik57.github.io/tags/bspwm/</link>
-      <pubDate>Mon, 31 May 2021 20:08:50 +0300</pubDate>
+      <title>ctf</title>
+      <link>https://ik57.github.io/tags/ctf/</link>
+      <pubDate>Wed, 14 Jun 2023 23:24:00 +0300</pubDate>
       
-      <guid>https://ik57.github.io/tags/bspwm/</guid>
+      <guid>https://ik57.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>easy</title>
+      <link>https://ik57.github.io/tags/easy/</link>
+      <pubDate>Wed, 14 Jun 2023 23:24:00 +0300</pubDate>
+      
+      <guid>https://ik57.github.io/tags/easy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>how-to</title>
       <link>https://ik57.github.io/tags/how-to/</link>
-      <pubDate>Mon, 31 May 2021 20:08:50 +0300</pubDate>
+      <pubDate>Wed, 14 Jun 2023 23:24:00 +0300</pubDate>
       
       <guid>https://ik57.github.io/tags/how-to/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tryhackme</title>
+      <link>https://ik57.github.io/tags/tryhackme/</link>
+      <pubDate>Wed, 14 Jun 2023 23:24:00 +0300</pubDate>
+      
+      <guid>https://ik57.github.io/tags/tryhackme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bspwm</title>
+      <link>https://ik57.github.io/tags/bspwm/</link>
+      <pubDate>Mon, 31 May 2021 20:08:50 +0300</pubDate>
+      
+      <guid>https://ik57.github.io/tags/bspwm/</guid>
       <description></description>
     </item>
     

@@ -2,34 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ik57.github.io/categories/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/tags/ctf/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/categories/ctf/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/tags/easy/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/tags/how-to/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/categories/how-to/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/posts/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/tags/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/tags/tryhackme/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/categories/tryhackme/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
+    <loc>https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/</loc>
+    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+  </url><url>
     <loc>https://ik57.github.io/tags/bspwm/</loc>
     <lastmod>2021-05-31T20:08:50+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/categories/bspwm/</loc>
     <lastmod>2021-05-31T20:08:50+03:00</lastmod>
   </url><url>
-    <loc>https://ik57.github.io/categories/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
-    <loc>https://ik57.github.io/tags/how-to/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
-    <loc>https://ik57.github.io/categories/how-to/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
-    <loc>https://ik57.github.io/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
     <loc>https://ik57.github.io/tags/polybar/</loc>
     <lastmod>2021-05-31T20:08:50+03:00</lastmod>
   </url><url>
-    <loc>https://ik57.github.io/posts/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
     <loc>https://ik57.github.io/tags/sxhkd/</loc>
-    <lastmod>2021-05-31T20:08:50+03:00</lastmod>
-  </url><url>
-    <loc>https://ik57.github.io/tags/</loc>
     <lastmod>2021-05-31T20:08:50+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</loc>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ctf on Ibrahim K</title>
+    <link>https://ik57.github.io/tags/ctf/</link>
+    <description>Recent content in ctf on Ibrahim K</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 14 Jun 2023 23:24:00 +0300</lastBuildDate><atom:link href="https://ik57.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeups: TryHackMe - Basic Pentesting (Easy)</title>
+      <link>https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/</link>
+      <pubDate>Wed, 14 Jun 2023 23:24:00 +0300</pubDate>
+      
+      <guid>https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/</guid>
+      <description>&amp;lsquo;This is a machine that allows you to practice web app hacking and privilege escalation&amp;rsquo;
+TryHackMe -Basic Pentesting- is an easy room that only required knowing the basics. Primarily, the only tools you will need are:
+Nmap gobuster Smbclient SSH Hydra John the Ripper Also, if you don&amp;rsquo;t know how to enumerate and exploit smb, it would be a good idea to do Network Services Room before you start the Basic Pentesting Room.</description>
+    </item>
+    
+  </channel>
+</rss>
