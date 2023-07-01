@@ -26,8 +26,8 @@ Nmap gobuster Smbclient SSH Hydra John the Ripper Also, if you don&amp;rsquo;t k
       
       <guid>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</guid>
       <description>Since bspwm doesn&amp;rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.
-1. Create a script First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:
-#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x command.</description>
+1. Create a script First we need to create a script to switch between languages. Here is an example for a bash script that switch between English and Arabic:
+#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ara&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x command.</description>
     </item>
     
     <item>

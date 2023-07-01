@@ -33,35 +33,37 @@ Nmap gobuster Smbclient SSH Hydra John the Ripper Also, if you don&amp;rsquo;t k
 <p>Also, if you don&rsquo;t know how to enumerate and exploit smb, it would be a good idea to do <a href="https://tryhackme.com/room/networkservices?ref=ik57.github.io">Network Services Room</a> before you start the <code>Basic Pentesting Room</code>.</p>
 <h2 id="info-gathering">Info Gathering</h2>
 <p>As always, start with nmap scan:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	nmap -sC -sV -oN enum &lt;IP&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  nmap -sC -sV -oN enum &lt;IP&gt;
 </span></span></code></pre></div><p><img src="/img/basicpentestingjt_nmap.png" alt=""></p>
 <p>As illustrated, it&rsquo;s a <strong>Linux</strong> machine that&rsquo;s running: ssh, web server, smb. Firstly, I accessed the webpage on the web server and I couldn&rsquo;t find anything interesting. So, I ran <strong>gobuster</strong> to find if there is a hidden directory on the web server.</p>
 <h2 id="question-3">Question 3</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	gobuster dir --url &lt;IP&gt; -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt &gt; dir
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  gobuster dir --url &lt;IP&gt; -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt &gt; dir
 </span></span></code></pre></div><p>Gobuster found a directory called &lsquo;/<strong>development</strong>&rsquo; that has two text files. After reading the two files, I learned that we should check the smb and also someone is using passwords that are easy to crack.</p>
 <h2 id="question-4-and-5">Question 4 and 5</h2>
 <p>No need to use <strong>enum4linux</strong> to enumerate or exploit the smb. However, <strong>smbclient</strong> is the only tool needed to exploit the anonymous smb share access to gain more information.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	smbclient //&lt;IP&gt;/Anonymous -U Anonymous
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  smbclient //&lt;IP&gt;/Anonymous -U Anonymous
 </span></span></code></pre></div><p>There is text file on the smb called <code>staff.txt</code>, which shows that there are two staff members (Jan/Kay). <strong>Jan</strong> is the answer for the 5th question.</p>
 <h2 id="question-6-and-7">Question 6 and 7</h2>
 <p>Here I made a mistake -maybe not- pursuing <strong>jan&rsquo;s</strong> smb password which is not needed. Instead, brute force <strong>jan&rsquo;s</strong> ssh password using <strong>hydra</strong> to find the answer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://&lt;IP&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://&lt;IP&gt;
 </span></span></code></pre></div><p>Hydra might take long time to find the password, so don&rsquo;t feel discourage if it took longer time to finish than your favorite content creator.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">[</span>22<span style="color:#ff79c6">][</span>ssh<span style="color:#ff79c6">]</span> host: &lt;IP&gt;   login: jan   password: armando
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>[22][ssh] host: &lt;IP&gt;   login: jan   password: armando
+</span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><h2 id="question-8-and-9">Question 8 and 9</h2>
 <p>Connect to ssh using jan&rsquo;s login credential [jan:armando].</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	ssh jan@&lt;IP&gt;
-</span></span></code></pre></div><p><strong>Note: Since it&rsquo;s a complete beginner machine, using <code>linpeas</code> is optional and tasks can be completed easily without it.</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  ssh jan@&lt;IP&gt;
+</span></span></code></pre></div><p><strong>Note: Since it&rsquo;s a complete beginner machine, using <code>linpeas</code> is optional and tasks can be completed easily without it.</strong><br>
 After connecting, either go to the <code>home</code> dir to see if there are more users other than <code>jan</code> or read<code>/etc/passwd</code>. There is a user <code>kay</code></p>
 <h2 id="question-10-and-11">Question 10 and 11</h2>
 <p>Go to <code>/home/kay/.ssh</code> and copy the <code>id_rsa</code> file to your machine. Now, let&rsquo;s crack Kay&rsquo;s ssh password, but before that transform kay&rsquo;s ssh private key to john format using <code>ssh2john</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	ssh2john kay_id_rsa &gt; kay_id_rsa.hash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  ssh2john kay_id_rsa &gt; kay_id_rsa.hash
 </span></span></code></pre></div><p>Then crake it,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$	john kay_id_rsa.hash --wordlist=/usr/share/wordlists/rockyou.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$&gt;  john kay_id_rsa.hash --wordlist=/usr/share/wordlists/rockyou.txt
 </span></span></code></pre></div><p>Using John the Ripper tool shows kay&rsquo;s ssh password is: <code>beeswax</code>.</p>
 <p>Lastly, use Kay&rsquo;s ssh credential to connect and find answer for the last question on kay&rsquo;s home dir.</p>
 <p><img src="/img/basicpentestingjt_kay_ssh.png" alt=""></p>
-<p><strong>Bonus: first I stopped after I got the final answer but later I found out that there&rsquo;s a text file -<code>flag.txt</code>- on the root dir.</strong></p>
+<p><strong>Bonus: There&rsquo;s a text file -<code>flag.txt</code>- on the root dir.</strong></p>
 ]]></content>
         </item>
         
@@ -72,36 +74,36 @@ After connecting, either go to the <code>home</code> dir to see if there are mor
             
             <guid>https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/</guid>
             <description>Since bspwm doesn&amp;rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.
-1. Create a script First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:
-#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ar&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x command.</description>
+1. Create a script First we need to create a script to switch between languages. Here is an example for a bash script that switch between English and Arabic:
+#!/bin/bash # Switching between keyboard layouts CURRENT_LAYOUT=$(setxkbmap -query | awk &amp;#39;NR==3{print $2}&amp;#39;) if [ &amp;#34;$CURRENT_LAYOUT&amp;#34; = &amp;#34;us&amp;#34; ]; then # To switch to arabic setxkbmap &amp;#34;ara&amp;#34; else setxkbmap &amp;#34;us&amp;#34; fi Then, make the script executable using chmod +x command.</description>
             <content type="html"><![CDATA[<p>Since bspwm doesn&rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.</p>
 <h2 id="1-create-a-script">1. Create a script</h2>
-<p>First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:</p>
+<p>First we need to create a script to switch between languages. Here is an example for a bash script that switch between English and Arabic:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span><span style="color:#6272a4"># Switching between keyboard layouts</span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">CURRENT_LAYOUT</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>setxkbmap -query | awk <span style="color:#f1fa8c">&#39;NR==3{print $2}&#39;</span><span style="color:#ff79c6">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$CURRENT_LAYOUT</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;us&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># To switch to arabic</span>
-</span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;ar&#34;</span>
+</span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;ara&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
 </span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;us&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
 </span></span></code></pre></div><p>Then, make the script executable using <code>chmod +x</code> command.</p>
 <h2 id="2-add-new-sxhkd-keybinding">2. Add new sxhkd keybinding</h2>
 <p>In the <code>sxhkdrc</code> file, add new keybinding:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span># Switch keyboard language
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Switch keyboard language
 </span></span><span style="display:flex;"><span>alt + space
 </span></span><span style="display:flex;"><span>	[the script].sh
 </span></span></code></pre></div><h2 id="3-add-polybar-module">3. Add Polybar module</h2>
 <p>Add the below module to the plybar <code>config</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>#############################
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#############################
 </span></span><span style="display:flex;"><span>[module/toggle_kb]
 </span></span><span style="display:flex;"><span>type = custom/script
 </span></span><span style="display:flex;"><span>exec = echo &#39;Toggle KB |&#39;
 </span></span><span style="display:flex;"><span>click-left = [the script].sh
 </span></span><span style="display:flex;"><span>#############################
-</span></span></code></pre></div><p>Then, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
+</span></span></code></pre></div><p>Now, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
 ]]></content>
         </item>
         

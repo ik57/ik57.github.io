@@ -22,7 +22,7 @@
 
 
 
-<link rel="stylesheet" href="https://ik57.github.io/main.b78c3be9451dc4ca61ca377f3dc2cf2e6345a44c2bae46216a322ef366daa399.css" integrity="sha256-t4w76UUdxMphyjd/PcLPLmNFpEwrrkYhajIu82bao5k=">
+<link rel="stylesheet" href="https://ik57.github.io/main.2b31eec2342e287a4849fda47c4d05966e38e3e39d881010d4b3c166a12e23f0.css" integrity="sha256-KzHuwjQuKHpISf2kfE0Flm444&#43;OdiBAQ1LPBZqEuI/A=">
 
 
 
@@ -102,11 +102,11 @@ if (!doNotTrack) {
     <div class="logo">
         
             <span class="logo__mark">&gt;</span>
-            <span class="logo__text ">
+            <span class="logo__text logo__pathname">
                 $ cd ~/home/</span>
             <span class="logo__cursor" style=
                   "
-                   background-color:#D5D8DA;
+                   background-color:#9399b2;
                    ">
             </span>
         
@@ -117,7 +117,7 @@ if (!doNotTrack) {
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://ik57.github.io/about/">About</a></li><li><a href="https://ik57.github.io/posts/">Blog</a></li>
+    <ul class="menu__inner"><li><a href="https://ik57.github.io/posts/">Blog</a></li>
     </ul>
 </nav>
 
@@ -182,32 +182,32 @@ if (!doNotTrack) {
       <div class="post-content">
         <p>Since bspwm doesn&rsquo;t handle any keyboard input we need to use a third party program such as, sxhkd or polybar to switch between keyboard layouts.</p>
 <h2 id="1-create-a-script">1. Create a script</h2>
-<p>First we need to create a script that switch between languages. Here is an example for a bash script that switch between English and Arabic:</p>
+<p>First we need to create a script to switch between languages. Here is an example for a bash script that switch between English and Arabic:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span><span style="color:#6272a4"># Switching between keyboard layouts</span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">CURRENT_LAYOUT</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>setxkbmap -query | awk <span style="color:#f1fa8c">&#39;NR==3{print $2}&#39;</span><span style="color:#ff79c6">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$CURRENT_LAYOUT</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;us&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># To switch to arabic</span>
-</span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;ar&#34;</span>
+</span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;ara&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
 </span></span><span style="display:flex;"><span>    setxkbmap <span style="color:#f1fa8c">&#34;us&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
 </span></span></code></pre></div><p>Then, make the script executable using <code>chmod +x</code> command.</p>
 <h2 id="2-add-new-sxhkd-keybinding">2. Add new sxhkd keybinding</h2>
 <p>In the <code>sxhkdrc</code> file, add new keybinding:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span># Switch keyboard language
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Switch keyboard language
 </span></span><span style="display:flex;"><span>alt + space
 </span></span><span style="display:flex;"><span>	[the script].sh
 </span></span></code></pre></div><h2 id="3-add-polybar-module">3. Add Polybar module</h2>
 <p>Add the below module to the plybar <code>config</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>#############################
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#############################
 </span></span><span style="display:flex;"><span>[module/toggle_kb]
 </span></span><span style="display:flex;"><span>type = custom/script
 </span></span><span style="display:flex;"><span>exec = echo &#39;Toggle KB |&#39;
 </span></span><span style="display:flex;"><span>click-left = [the script].sh
 </span></span><span style="display:flex;"><span>#############################
-</span></span></code></pre></div><p>Then, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
+</span></span></code></pre></div><p>Now, whenever you click the module in the bar, it will switch between the languages predefined in the script.</p>
 
       </div>
     </article>
