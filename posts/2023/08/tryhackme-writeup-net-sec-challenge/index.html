@@ -5,16 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="map[name:Ibrahim K]">
-<meta name="description" content="My first ctf writeup" />
+<meta name="description" content="A walkthrough for the TryHackMe&#39;s room Net Sec Challenge" />
 <meta name="keywords" content="ik57, ibrahim k, blog, homepage, how-to, tryhackme, ctf, easy" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#1e1e2e" />
-<link rel="canonical" href="https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/" />
+<link rel="canonical" href="https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/" />
 
 
     <title>
         
-            Writeups: TryHackMe - Basic Pentesting (Easy) :: Ibrahim K 
+             TryHackMe Writeup: Net Sec Challenge :: Ibrahim K 
         
     </title>
 
@@ -35,25 +35,25 @@
     <meta name="msapplication-TileColor" content="">
 
 
-<meta itemprop="name" content="Writeups: TryHackMe - Basic Pentesting (Easy)">
-<meta itemprop="description" content="My first ctf writeup"><meta itemprop="datePublished" content="2023-06-14T23:24:00+03:00" />
-<meta itemprop="dateModified" content="2023-06-14T23:24:00+03:00" />
-<meta itemprop="wordCount" content="461"><meta itemprop="image" content="https://ik57.github.io"/>
+<meta itemprop="name" content=" TryHackMe Writeup: Net Sec Challenge">
+<meta itemprop="description" content="A walkthrough for the TryHackMe&#39;s room Net Sec Challenge"><meta itemprop="datePublished" content="2023-08-01T22:06:40+03:00" />
+<meta itemprop="dateModified" content="2023-08-01T22:06:40+03:00" />
+<meta itemprop="wordCount" content="687"><meta itemprop="image" content="https://ik57.github.io"/>
 <meta itemprop="keywords" content="how-to,tryhackme,ctf,easy," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ik57.github.io"/>
 
-<meta name="twitter:title" content="Writeups: TryHackMe - Basic Pentesting (Easy)"/>
-<meta name="twitter:description" content="My first ctf writeup"/>
+<meta name="twitter:title" content=" TryHackMe Writeup: Net Sec Challenge"/>
+<meta name="twitter:description" content="A walkthrough for the TryHackMe&#39;s room Net Sec Challenge"/>
 
 
 
-    <meta property="og:title" content="Writeups: TryHackMe - Basic Pentesting (Easy)" />
-<meta property="og:description" content="My first ctf writeup" />
+    <meta property="og:title" content=" TryHackMe Writeup: Net Sec Challenge" />
+<meta property="og:description" content="A walkthrough for the TryHackMe&#39;s room Net Sec Challenge" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/" /><meta property="og:image" content="https://ik57.github.io"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-06-14T23:24:00+03:00" />
-<meta property="article:modified_time" content="2023-06-14T23:24:00+03:00" />
+<meta property="og:url" content="https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/" /><meta property="og:image" content="https://ik57.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-01T22:06:40+03:00" />
+<meta property="article:modified_time" content="2023-08-01T22:06:40+03:00" />
 
 
 
@@ -66,7 +66,7 @@
 
 
 
-    <meta property="article:published_time" content="2023-06-14 23:24:00 &#43;0300 &#43;03" />
+    <meta property="article:published_time" content="2023-08-01 22:06:40 &#43;0300 &#43;03" />
 
 
 
@@ -150,7 +150,7 @@ if (!doNotTrack) {
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        3 minutes
+        4 minutes
 
         
       </p>
@@ -158,11 +158,11 @@ if (!doNotTrack) {
 
     <article>
       <h1 class="post-title">
-        <a href="https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/">Writeups: TryHackMe - Basic Pentesting (Easy)</a>
+        <a href="https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/">TryHackMe Writeup: Net Sec Challenge</a>
       </h1>
 
       
-        <div class="post-excerpt">My first ctf writeup</div>
+        <div class="post-excerpt">A walkthrough for the TryHackMe&#39;s room Net Sec Challenge</div>
       
 
       
@@ -171,12 +171,15 @@ if (!doNotTrack) {
           <div class="toc-title">Table of Contents</div>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#info-gathering">Info Gathering</a></li>
-    <li><a href="#question-3">Question 3</a></li>
-    <li><a href="#question-4-and-5">Question 4 and 5</a></li>
-    <li><a href="#question-6-and-7">Question 6 and 7</a></li>
-    <li><a href="#question-8-and-9">Question 8 and 9</a></li>
-    <li><a href="#question-10-and-11">Question 10 and 11</a></li>
+    <li><a href="#what-is-the-highest-port-number-being-open-less-than-10000">What is the highest port number being open less than 10,000?</a></li>
+    <li><a href="#there-is-an-open-port-outside-the-common-1000-ports-it-is-above-10000-what-is-it">There is an open port outside the common 1000 ports; it is above 10,000. What is it?</a></li>
+    <li><a href="#how-many-tcp-ports-are-open">How many TCP ports are open?</a></li>
+    <li><a href="#what-is-the-flag-hidden-in-the-http-server-header">What is the flag hidden in the HTTP server header?</a></li>
+    <li><a href="#what-is-the-flag-hidden-in-the-ssh-server-header">What is the flag hidden in the SSH server header?</a></li>
+    <li><a href="#we-have-an-ftp-server-listening-on-a-nonstandard-port-what-is-the-version-of-the-ftp-server">We have an FTP server listening on a nonstandard port. What is the version of the FTP server?</a></li>
+    <li><a href="#one-line-to-solve-them-all">One line to solve them all</a></li>
+    <li><a href="#we-learned-two-usernames-using-social-engineering-eddie-and-quinn-what-is-the-flag-hidden-in-one-of-these-two-account-files-and-accessible-via-ftp">We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?</a></li>
+    <li><a href="#browsing-to-httpmachine_ip8080-displays-a-small-challenge-that-will-give-you-a-flag-once-you-solve-it-what-is-the-flag">Browsing to http://MACHINE_IP:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?</a></li>
   </ul>
 </nav>
         </aside>
@@ -185,55 +188,138 @@ if (!doNotTrack) {
       
 
       <div class="post-content">
-        <blockquote>
-<p>&lsquo;This is a machine that allows you to practice web app hacking and privilege escalation&rsquo;</p>
+        <table>
+<thead>
+<tr>
+<th><a href="https://tryhackme.com/room/netsecchallenge?ref=ik57.github.io">Net Sec Challenge</a></th>
+<th>Difficulty: <strong>Medium</strong></th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>&ldquo;Use this challenge to test your mastery of the skills you have acquired in the Network Security module. All the questions in this challenge can be solved using only <code>nmap</code>, <code>telnet</code>, and <code>hydra</code>.&rdquo;</p>
 </blockquote>
-<p><a href="https://tryhackme.com/room/basicpentestingjt?ref=ik57.github.io">TryHackMe -Basic Pentesting-</a> is an easy room that only required knowing the basics. Primarily, the only tools you will need are:</p>
-<ul>
-<li>Nmap</li>
-<li>gobuster</li>
-<li>Smbclient</li>
-<li>SSH</li>
-<li>Hydra</li>
-<li>John the Ripper</li>
-</ul>
-<p>Also, if you don&rsquo;t know how to enumerate and exploit smb, it would be a good idea to do <a href="https://tryhackme.com/room/networkservices?ref=ik57.github.io">Network Services Room</a> before you start the <code>Basic Pentesting Room</code>.</p>
-<h2 id="info-gathering">Info Gathering</h2>
-<p>As always, start with nmap scan:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  nmap -sC -sV -oN enum [MACHINE_IP]
-</span></span></span></code></pre></div><p><img src="https://ik57.github.io/img/basicpentestingjt_nmap.png" alt=""></p>
-<p>As illustrated above, it&rsquo;s a <strong>Linux</strong> machine that&rsquo;s running: ssh, web server, smb. Firstly, I accessed the webpage on the web server and I couldn&rsquo;t find anything interesting. So, I ran <strong>gobuster</strong> to find if there is a hidden directory on the web server.</p>
-<h2 id="question-3">Question 3</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  gobuster dir --url [MACHINE_IP] -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt &gt; dir
-</span></span></span></code></pre></div><p>Gobuster found a directory called &lsquo;/<strong>development</strong>&rsquo; that has two text files. After reading the two files, I learned that <code>smb</code> should be checked and also someone is using passwords that are easy to crack.</p>
-<h2 id="question-4-and-5">Question 4 and 5</h2>
-<p>No need to use <strong>enum4linux</strong> to enumerate or exploit the smb. However, <strong>smbclient</strong> is the only tool needed to exploit the anonymous smb share access to gain more information.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  smbclient //[MACHINE_IP]/Anonymous -U Anonymous
-</span></span></span></code></pre></div><p>There is text file on the smb called <code>staff.txt</code>, which shows that there are two staff members (Jan/Kay). <strong>Jan</strong> is the answer for the 5th question.</p>
-<h2 id="question-6-and-7">Question 6 and 7</h2>
-<p>Here I made a mistake -maybe not- pursuing <strong>jan&rsquo;s</strong> smb password which is not needed. Instead, brute force <strong>jan&rsquo;s</strong> ssh password using <strong>hydra</strong> to find the answer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://[MACHINE_IP]
-</span></span></span></code></pre></div><p>Hydra might take long time to find the password, so don&rsquo;t feel discourage if it took longer time to finish than your favorite content creator.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>[22][ssh] host: [MACHINE_IP]   login: jan   password: <span class="inline-spoiler"> armando </span>
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><h2 id="question-8-and-9">Question 8 and 9</h2>
-<p>Connect to ssh using jan&rsquo;s login credential [jan:<span class="inline-spoiler"> armando </span>].</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  ssh jan@[MACHINE_IP]
-</span></span></span></code></pre></div><blockquote>
-<p><strong>Note: Since it&rsquo;s a complete beginner machine, using <code>linpeas</code> is optional and the task can be completed easily without it.</strong></p>
-</blockquote>
-<p>After connecting, either go to the <code>home</code> dir to see if there are more users other than <code>jan</code> or read<code>/etc/passwd</code>. There is a user <code>kay</code></p>
-<h2 id="question-10-and-11">Question 10 and 11</h2>
-<p>Go to <code>/home/kay/.ssh</code> and copy the <code>id_rsa</code> file to your machine. Now, let&rsquo;s crack Kay&rsquo;s ssh password, but before that transform kay&rsquo;s ssh private key to john format using <code>ssh2john</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  ssh2john kay_id_rsa &gt; kay_id_rsa.hash
-</span></span></span></code></pre></div><p>Then crake it,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  john kay_id_rsa.hash --wordlist=/usr/share/wordlists/rockyou.txt
-</span></span></span></code></pre></div><p>Using John the Ripper tool shows kay&rsquo;s ssh password is: <span class="inline-spoiler"> beeswax </span>.</p>
-<p>Lastly, use Kay&rsquo;s ssh credential to connect and find answer for the last question on kay&rsquo;s home dir.</p>
-<p><img src="https://ik57.github.io/img/basicpentestingjt_kay_ssh.png" alt=""></p>
-<p><strong>Bonus: There&rsquo;s a text file -<code>flag.txt</code>- on the root dir.</strong></p>
+<p>The first three questions can be answered by scanning all the ports between 1 to 65535 using <code>nmap</code> <code>-p-</code> flag. Or you could slice the scans to practice more <code>nmap</code> flags.</p>
+<h2 id="what-is-the-highest-port-number-being-open-less-than-10000">What is the highest port number being open less than 10,000?</h2>
+<p>As I stated before, one way to answer this question is to scan all the ports and then find the highest open port less than 10,000. Or as shown below, only scan the ports between 1000 and 10,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p1000-10000 [MACHINE_IP]
+</span></span></span></code></pre></div><p>The highest open port is: <span class="inline-spoiler"> 8080 </span>.</p>
+<hr>
+<h2 id="there-is-an-open-port-outside-the-common-1000-ports-it-is-above-10000-what-is-it">There is an open port outside the common 1000 ports; it is above 10,000. What is it?</h2>
+<p>With <code>-p</code> flag, a hyphen can be used to specify <code>grater than or equal</code> or <code>less than or equal</code> a port number. For example, if a hyphen is before a number, like <code>nmap -p -57 [MACHINE_IP]</code>, <strong>nmap</strong> will scan from port 1 to port 57. Becuase the end of the range was specified but the beginning was excluded. On the other hand, if a hyphen is after a number, such as, <code>nmap -p 57- [MACHINE_IP]</code> the beginning of the range was specified but the end was excluded. For this reason, <strong>nmap</strong> will start the scan from port 10000 to the last port possible, <strong>65535</strong>.</p>
+<p>Now, to find the open port over 10,000, the starting port of the scan will be specified -10,000- but the end port will be excluded, so <code>nmap</code> will scan from port 10,000 to port 65535:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p 10000- [MACHINE_IP]
+</span></span></span></code></pre></div><p>Or scan all the port and exclude ports between 1 to 10,000:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p- --exclude-port 1-10000 [MACHINE_IP]
+</span></span></span></code></pre></div><p>Answer: <span class="inline-spoiler"> 10021 </span></p>
+<hr>
+<h2 id="how-many-tcp-ports-are-open">How many TCP ports are open?</h2>
+<p><span class="inline-spoiler"> 6 </span> ports are open.</p>
+<iframe src="https://giphy.com/embed/1eujfAWhlorF5HOb6C" width="480" height="270" frameBorder="0" alt="math gif" style=" margin:auto;display:block;border-radius: 8px;"></iframe>
+<hr>
+<h2 id="what-is-the-flag-hidden-in-the-http-server-header">What is the flag hidden in the HTTP server header?</h2>
+<p>Since my Firefox was opened, I chose Firefox <code>Web DevTools</code> to get the header. However, you could use <code>curl</code>, <code>telnet</code>, or even <code>burp suite</code> to get the flag in the header.</p>
 
+    <img src="https://ik57.github.io/img/netsecchallenge/netsecchallenge_q4.png"  alt="flag hidden in the HTTP server header"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="what-is-the-flag-hidden-in-the-ssh-server-header">What is the flag hidden in the SSH server header?</h2>
+
+    <img src="https://ik57.github.io/img/netsecchallenge/netsecchallenge_q5.png"  alt="flag hidden in the SSH server header"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="we-have-an-ftp-server-listening-on-a-nonstandard-port-what-is-the-version-of-the-ftp-server">We have an FTP server listening on a nonstandard port. What is the version of the FTP server?</h2>
+<p>Use <code>-sV</code> flag to find the the FTP server version.</p>
+
+    <img src="https://ik57.github.io/img/netsecchallenge/netsecchallenge_q6.png"  alt="the version of the FTP server"  class="center"  style="border-radius: 8px;"  />
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-p[ftp port number]</code></td>
+<td style="text-align:center">To only scan the specified port</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sV</code></td>
+<td style="text-align:center">Version detection</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="one-line-to-solve-them-all">One line to solve them all</h2>
+<p>You could solve all the previous questions with one line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p- -sV -sC [MACHINE_IP]
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-sS</code></td>
+<td style="text-align:center">TCP SYN (Stealth) Scan</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-p-</code></td>
+<td style="text-align:center">Scan all ports from port 1 to port 65535</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sV</code></td>
+<td style="text-align:center">Enables version detection</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sC</code></td>
+<td style="text-align:center">Performs a script scan using the default set of scripts</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="we-learned-two-usernames-using-social-engineering-eddie-and-quinn-what-is-the-flag-hidden-in-one-of-these-two-account-files-and-accessible-via-ftp">We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?</h2>
+<p>First, create and write the two usernames, eddie and quinn, on a text file. Then, use <code>hydra</code> to find the passwords for the two usernames. You could use <code>rockyou</code> wordlist, but normally I start with smaller wordlist, in this case I used the <strong>seclists</strong> wordlist, <code>2020-200_most_used_passwords</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo hydra -L usrs -P /usr/share/wordlists/seclists/Passwords/2020-200_most_used_passwords.txt ftp://[MACHINE_IP]:[ftp port num]
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-L</code></td>
+<td style="text-align:center">load several logins form [usrs] file</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-P</code></td>
+<td style="text-align:center">load several passwords from a wordlist</td>
+</tr>
+</tbody>
+</table>
+
+    <img src="https://ik57.github.io/img/netsecchallenge/netsecchallenge_q7_1.png"  alt="hydra"  class="center"  style="border-radius: 8px;"  />
+
+
+<p>After <code>hydra</code> find the passwords for the two users, login to FTP and get the flag.</p>
+
+    <img src="https://ik57.github.io/img/netsecchallenge/netsecchallenge_q7_2.png"  alt="ftp flag"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="browsing-to-httpmachine_ip8080-displays-a-small-challenge-that-will-give-you-a-flag-once-you-solve-it-what-is-the-flag">Browsing to http://MACHINE_IP:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?</h2>
+<p>This is the only question that was challenging and the only one that I enjoyed. It made my re-read the nmap rooms plus <a href="https://nmap.org/book/firewall-subversion.html?ref=ik57.github.io">Chapter 10. Detecting and Subverting Firewalls and Intrusion Detection Systems</a>. The first thing I thought I should used was the Timing Templates <code>-T</code>. Then, I tried fragmentation flag <code>-f</code>, the <code>--mtu</code> flag, and combination of other flags and options, however, non of them succeed. Finally, the only thing that worked was the Null scan <code>-sN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sN [MACHINE_IP]
+</span></span></span></code></pre></div>
       </div>
     </article>
 
@@ -270,7 +356,7 @@ if (!doNotTrack) {
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        461 Words
+        687 Words
       </p>
 
       <p>
@@ -281,7 +367,7 @@ if (!doNotTrack) {
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          06-14-2023 23:24
+          08-01-2023 22:06
         
 
          
@@ -292,7 +378,7 @@ if (!doNotTrack) {
       <hr />
       <div class="sharing-buttons">
         
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
   <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
     </div>
@@ -300,7 +386,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
   <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
       <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
@@ -309,7 +395,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;caption=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;canonicalUrl=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;caption=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;canonicalUrl=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
   <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
     <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
@@ -318,7 +404,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="mailto:?subject=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;body=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+<a class="resp-sharing-button__link" href="mailto:?subject=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;body=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
   <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
     </div>
@@ -326,7 +412,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f&amp;media=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f;description=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f&amp;media=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f;description=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
   <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
     </div>
@@ -334,7 +420,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f&amp;title=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;summary=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;source=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f&amp;title=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;summary=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;source=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
   <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     </div>
@@ -342,7 +428,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f&amp;resubmit=true&amp;title=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f&amp;resubmit=true&amp;title=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
   <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
     </div>
@@ -350,7 +436,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f;title=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f;title=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge" target="_blank" rel="noopener" aria-label="" title="Share on xing">
   <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
     </div>
@@ -358,7 +444,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="whatsapp://send?text=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29%20https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+<a class="resp-sharing-button__link" href="whatsapp://send?text=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge%20https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
   <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </div>
@@ -366,7 +452,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f&amp;t=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f&amp;t=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
   <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
     </div>
@@ -374,7 +460,7 @@ if (!doNotTrack) {
 </a>
 
 
-<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Writeups%3a%20TryHackMe%20-%20Basic%20Pentesting%20%28Easy%29&amp;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f06%2fwriteups-tryhackme-basic-pentesting-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=%20TryHackMe%20Writeup%3a%20Net%20Sec%20Challenge&amp;url=https%3a%2f%2fik57.github.io%2fposts%2f2023%2f08%2ftryhackme-writeup-net-sec-challenge%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
   <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </div>
@@ -389,18 +475,11 @@ if (!doNotTrack) {
 
         <div class="pagination__buttons">
             
-            <span class="button previous">
-                <a href="https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/">
-                    <span class="button__icon">←</span>
-                    <span class="button__text"> TryHackMe Writeup: Net Sec Challenge</span>
-                </a>
-            </span>
-            
 
             
             <span class="button next">
-                <a href="https://ik57.github.io/posts/2021/05/ways-to-switch-between-keyboard-layouts-in-bspwm/">
-                    <span class="button__text">Ways To Switch Between Keyboard Layouts in bspwm</span>
+                <a href="https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/">
+                    <span class="button__text">Writeups: TryHackMe - Basic Pentesting (Easy)</span>
                     <span class="button__icon">→</span>
                 </a>
             </span>

@@ -2,38 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/</loc>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
+  </url><url>
     <loc>https://ik57.github.io/categories/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/tags/ctf/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/categories/ctf/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/tags/easy/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/tags/how-to/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/categories/how-to/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/posts/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/tags/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/tags/tryhackme/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/categories/tryhackme/</loc>
-    <lastmod>2023-06-14T23:24:00+03:00</lastmod>
+    <lastmod>2023-08-01T22:06:40+03:00</lastmod>
   </url><url>
     <loc>https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/</loc>
     <lastmod>2023-06-14T23:24:00+03:00</lastmod>

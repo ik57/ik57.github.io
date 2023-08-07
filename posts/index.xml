@@ -6,8 +6,150 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-        <lastBuildDate>Wed, 14 Jun 2023 23:24:00 +0300</lastBuildDate>
+        <lastBuildDate>Tue, 01 Aug 2023 22:06:40 +0300</lastBuildDate>
         <atom:link href="https://ik57.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title> TryHackMe Writeup: Net Sec Challenge</title>
+            <link>https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/</link>
+            <pubDate>Tue, 01 Aug 2023 22:06:40 +0300</pubDate>
+            
+            <guid>https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/</guid>
+            <description>Net Sec Challenge Difficulty: Medium &amp;ldquo;Use this challenge to test your mastery of the skills you have acquired in the Network Security module. All the questions in this challenge can be solved using only nmap, telnet, and hydra.&amp;rdquo;
+The first three questions can be answered by scanning all the ports between 1 to 65535 using nmap -p- flag. Or you could slice the scans to practice more nmap flags.</description>
+            <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th><a href="https://tryhackme.com/room/netsecchallenge?ref=ik57.github.io">Net Sec Challenge</a></th>
+<th>Difficulty: <strong>Medium</strong></th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>&ldquo;Use this challenge to test your mastery of the skills you have acquired in the Network Security module. All the questions in this challenge can be solved using only <code>nmap</code>, <code>telnet</code>, and <code>hydra</code>.&rdquo;</p>
+</blockquote>
+<p>The first three questions can be answered by scanning all the ports between 1 to 65535 using <code>nmap</code> <code>-p-</code> flag. Or you could slice the scans to practice more <code>nmap</code> flags.</p>
+<h2 id="what-is-the-highest-port-number-being-open-less-than-10000">What is the highest port number being open less than 10,000?</h2>
+<p>As I stated before, one way to answer this question is to scan all the ports and then find the highest open port less than 10,000. Or as shown below, only scan the ports between 1000 and 10,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p1000-10000 [MACHINE_IP]
+</span></span></span></code></pre></div><p>The highest open port is: <span class="inline-spoiler"> 8080 </span>.</p>
+<hr>
+<h2 id="there-is-an-open-port-outside-the-common-1000-ports-it-is-above-10000-what-is-it">There is an open port outside the common 1000 ports; it is above 10,000. What is it?</h2>
+<p>With <code>-p</code> flag, a hyphen can be used to specify <code>grater than or equal</code> or <code>less than or equal</code> a port number. For example, if a hyphen is before a number, like <code>nmap -p -57 [MACHINE_IP]</code>, <strong>nmap</strong> will scan from port 1 to port 57. Becuase the end of the range was specified but the beginning was excluded. On the other hand, if a hyphen is after a number, such as, <code>nmap -p 57- [MACHINE_IP]</code> the beginning of the range was specified but the end was excluded. For this reason, <strong>nmap</strong> will start the scan from port 10000 to the last port possible, <strong>65535</strong>.</p>
+<p>Now, to find the open port over 10,000, the starting port of the scan will be specified -10,000- but the end port will be excluded, so <code>nmap</code> will scan from port 10,000 to port 65535:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p 10000- [MACHINE_IP]
+</span></span></span></code></pre></div><p>Or scan all the port and exclude ports between 1 to 10,000:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p- --exclude-port 1-10000 [MACHINE_IP]
+</span></span></span></code></pre></div><p>Answer: <span class="inline-spoiler"> 10021 </span></p>
+<hr>
+<h2 id="how-many-tcp-ports-are-open">How many TCP ports are open?</h2>
+<p><span class="inline-spoiler"> 6 </span> ports are open.</p>
+<iframe src="https://giphy.com/embed/1eujfAWhlorF5HOb6C" width="480" height="270" frameBorder="0" alt="math gif" style=" margin:auto;display:block;border-radius: 8px;"></iframe>
+<hr>
+<h2 id="what-is-the-flag-hidden-in-the-http-server-header">What is the flag hidden in the HTTP server header?</h2>
+<p>Since my Firefox was opened, I chose Firefox <code>Web DevTools</code> to get the header. However, you could use <code>curl</code>, <code>telnet</code>, or even <code>burp suite</code> to get the flag in the header.</p>
+
+    <img src="/img/netsecchallenge/netsecchallenge_q4.png"  alt="flag hidden in the HTTP server header"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="what-is-the-flag-hidden-in-the-ssh-server-header">What is the flag hidden in the SSH server header?</h2>
+
+    <img src="/img/netsecchallenge/netsecchallenge_q5.png"  alt="flag hidden in the SSH server header"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="we-have-an-ftp-server-listening-on-a-nonstandard-port-what-is-the-version-of-the-ftp-server">We have an FTP server listening on a nonstandard port. What is the version of the FTP server?</h2>
+<p>Use <code>-sV</code> flag to find the the FTP server version.</p>
+
+    <img src="/img/netsecchallenge/netsecchallenge_q6.png"  alt="the version of the FTP server"  class="center"  style="border-radius: 8px;"  />
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-p[ftp port number]</code></td>
+<td style="text-align:center">To only scan the specified port</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sV</code></td>
+<td style="text-align:center">Version detection</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="one-line-to-solve-them-all">One line to solve them all</h2>
+<p>You could solve all the previous questions with one line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sS -p- -sV -sC [MACHINE_IP]
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-sS</code></td>
+<td style="text-align:center">TCP SYN (Stealth) Scan</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-p-</code></td>
+<td style="text-align:center">Scan all ports from port 1 to port 65535</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sV</code></td>
+<td style="text-align:center">Enables version detection</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-sC</code></td>
+<td style="text-align:center">Performs a script scan using the default set of scripts</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="we-learned-two-usernames-using-social-engineering-eddie-and-quinn-what-is-the-flag-hidden-in-one-of-these-two-account-files-and-accessible-via-ftp">We learned two usernames using social engineering: eddie and quinn. What is the flag hidden in one of these two account files and accessible via FTP?</h2>
+<p>First, create and write the two usernames, eddie and quinn, on a text file. Then, use <code>hydra</code> to find the passwords for the two usernames. You could use <code>rockyou</code> wordlist, but normally I start with smaller wordlist, in this case I used the <strong>seclists</strong> wordlist, <code>2020-200_most_used_passwords</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo hydra -L usrs -P /usr/share/wordlists/seclists/Passwords/2020-200_most_used_passwords.txt ftp://[MACHINE_IP]:[ftp port num]
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-L</code></td>
+<td style="text-align:center">load several logins form [usrs] file</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-P</code></td>
+<td style="text-align:center">load several passwords from a wordlist</td>
+</tr>
+</tbody>
+</table>
+
+    <img src="/img/netsecchallenge/netsecchallenge_q7_1.png"  alt="hydra"  class="center"  style="border-radius: 8px;"  />
+
+
+<p>After <code>hydra</code> find the passwords for the two users, login to FTP and get the flag.</p>
+
+    <img src="/img/netsecchallenge/netsecchallenge_q7_2.png"  alt="ftp flag"  class="center"  style="border-radius: 8px;"  />
+
+
+<hr>
+<h2 id="browsing-to-httpmachine_ip8080-displays-a-small-challenge-that-will-give-you-a-flag-once-you-solve-it-what-is-the-flag">Browsing to http://MACHINE_IP:8080 displays a small challenge that will give you a flag once you solve it. What is the flag?</h2>
+<p>This is the only question that was challenging and the only one that I enjoyed. It made my re-read the nmap rooms plus <a href="https://nmap.org/book/firewall-subversion.html?ref=ik57.github.io">Chapter 10. Detecting and Subverting Firewalls and Intrusion Detection Systems</a>. The first thing I thought I should used was the Timing Templates <code>-T</code>. Then, I tried fragmentation flag <code>-f</code>, the <code>--mtu</code> flag, and combination of other flags and options, however, non of them succeed. Finally, the only thing that worked was the Null scan <code>-sN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$</span><span style="color:#eed49f">  sudo nmap -sN [MACHINE_IP]
+</span></span></span></code></pre></div>]]></content>
+        </item>
         
         <item>
             <title>Writeups: TryHackMe - Basic Pentesting (Easy)</title>
@@ -33,34 +175,36 @@ Nmap gobuster Smbclient SSH Hydra John the Ripper Also, if you don&amp;rsquo;t k
 <p>Also, if you don&rsquo;t know how to enumerate and exploit smb, it would be a good idea to do <a href="https://tryhackme.com/room/networkservices?ref=ik57.github.io">Network Services Room</a> before you start the <code>Basic Pentesting Room</code>.</p>
 <h2 id="info-gathering">Info Gathering</h2>
 <p>As always, start with nmap scan:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  nmap -sC -sV -oN enum &lt;IP&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  nmap -sC -sV -oN enum [MACHINE_IP]
 </span></span></span></code></pre></div><p><img src="/img/basicpentestingjt_nmap.png" alt=""></p>
 <p>As illustrated above, it&rsquo;s a <strong>Linux</strong> machine that&rsquo;s running: ssh, web server, smb. Firstly, I accessed the webpage on the web server and I couldn&rsquo;t find anything interesting. So, I ran <strong>gobuster</strong> to find if there is a hidden directory on the web server.</p>
 <h2 id="question-3">Question 3</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  gobuster dir --url &lt;IP&gt; -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt &gt; dir
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  gobuster dir --url [MACHINE_IP] -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt &gt; dir
 </span></span></span></code></pre></div><p>Gobuster found a directory called &lsquo;/<strong>development</strong>&rsquo; that has two text files. After reading the two files, I learned that <code>smb</code> should be checked and also someone is using passwords that are easy to crack.</p>
 <h2 id="question-4-and-5">Question 4 and 5</h2>
 <p>No need to use <strong>enum4linux</strong> to enumerate or exploit the smb. However, <strong>smbclient</strong> is the only tool needed to exploit the anonymous smb share access to gain more information.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  smbclient //&lt;IP&gt;/Anonymous -U Anonymous
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  smbclient //[MACHINE_IP]/Anonymous -U Anonymous
 </span></span></span></code></pre></div><p>There is text file on the smb called <code>staff.txt</code>, which shows that there are two staff members (Jan/Kay). <strong>Jan</strong> is the answer for the 5th question.</p>
 <h2 id="question-6-and-7">Question 6 and 7</h2>
 <p>Here I made a mistake -maybe not- pursuing <strong>jan&rsquo;s</strong> smb password which is not needed. Instead, brute force <strong>jan&rsquo;s</strong> ssh password using <strong>hydra</strong> to find the answer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://&lt;IP&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  hydra -l jan -P /usr/share/wordlists/rockyou.txt ssh://[MACHINE_IP]
 </span></span></span></code></pre></div><p>Hydra might take long time to find the password, so don&rsquo;t feel discourage if it took longer time to finish than your favorite content creator.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>[22][ssh] host: &lt;IP&gt;   login: jan   password: armando
+</span></span><span style="display:flex;"><span>[22][ssh] host: [MACHINE_IP]   login: jan   password: <span class="inline-spoiler"> armando </span>
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><h2 id="question-8-and-9">Question 8 and 9</h2>
-<p>Connect to ssh using jan&rsquo;s login credential [jan:armando].</p>
-<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  ssh jan@&lt;IP&gt;
-</span></span></span></code></pre></div><p><strong>Note: Since it&rsquo;s a complete beginner machine, using <code>linpeas</code> is optional and tasks can be completed easily without it.</strong>
-After connecting, either go to the <code>home</code> dir to see if there are more users other than <code>jan</code> or read<code>/etc/passwd</code>. There is a user <code>kay</code></p>
+<p>Connect to ssh using jan&rsquo;s login credential [jan:<span class="inline-spoiler"> armando </span>].</p>
+<div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  ssh jan@[MACHINE_IP]
+</span></span></span></code></pre></div><blockquote>
+<p><strong>Note: Since it&rsquo;s a complete beginner machine, using <code>linpeas</code> is optional and the task can be completed easily without it.</strong></p>
+</blockquote>
+<p>After connecting, either go to the <code>home</code> dir to see if there are more users other than <code>jan</code> or read<code>/etc/passwd</code>. There is a user <code>kay</code></p>
 <h2 id="question-10-and-11">Question 10 and 11</h2>
 <p>Go to <code>/home/kay/.ssh</code> and copy the <code>id_rsa</code> file to your machine. Now, let&rsquo;s crack Kay&rsquo;s ssh password, but before that transform kay&rsquo;s ssh private key to john format using <code>ssh2john</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  ssh2john kay_id_rsa &gt; kay_id_rsa.hash
 </span></span></span></code></pre></div><p>Then crake it,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f5a97f;background-color:#24273a;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-terminfo" data-lang="terminfo"><span style="display:flex;"><span><span style="color:#c6a0f6">$&gt;</span><span style="color:#eed49f">  john kay_id_rsa.hash --wordlist=/usr/share/wordlists/rockyou.txt
-</span></span></span></code></pre></div><p>Using John the Ripper tool shows kay&rsquo;s ssh password is: <code>beeswax</code>.</p>
+</span></span></span></code></pre></div><p>Using John the Ripper tool shows kay&rsquo;s ssh password is: <span class="inline-spoiler"> beeswax </span>.</p>
 <p>Lastly, use Kay&rsquo;s ssh credential to connect and find answer for the last question on kay&rsquo;s home dir.</p>
 <p><img src="/img/basicpentestingjt_kay_ssh.png" alt=""></p>
 <p><strong>Bonus: There&rsquo;s a text file -<code>flag.txt</code>- on the root dir.</strong></p>

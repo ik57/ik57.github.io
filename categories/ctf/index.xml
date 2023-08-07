@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 14 Jun 2023 23:24:00 +0300</lastBuildDate><atom:link href="https://ik57.github.io/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Aug 2023 22:06:40 +0300</lastBuildDate><atom:link href="https://ik57.github.io/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> TryHackMe Writeup: Net Sec Challenge</title>
+      <link>https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/</link>
+      <pubDate>Tue, 01 Aug 2023 22:06:40 +0300</pubDate>
+      
+      <guid>https://ik57.github.io/posts/2023/08/tryhackme-writeup-net-sec-challenge/</guid>
+      <description>Net Sec Challenge Difficulty: Medium &amp;ldquo;Use this challenge to test your mastery of the skills you have acquired in the Network Security module. All the questions in this challenge can be solved using only nmap, telnet, and hydra.&amp;rdquo;
+The first three questions can be answered by scanning all the ports between 1 to 65535 using nmap -p- flag. Or you could slice the scans to practice more nmap flags.</description>
+    </item>
+    
     <item>
       <title>Writeups: TryHackMe - Basic Pentesting (Easy)</title>
       <link>https://ik57.github.io/posts/2023/06/writeups-tryhackme-basic-pentesting-easy/</link>
